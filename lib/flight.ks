@@ -15,9 +15,8 @@ global function autopilot_launch {
   wait until ship:status = "FLYING".
   print "Liftoff!".
 
-  // set timewarp to 4x after liftoff (physics mode should be set in the boot file)
-  set kuniverse:timewarp:warp to 3.
-  print "TimeWarp set to 4x".
+  // set timewarp to 4x after liftoff
+  phy_warp(4).
 }
 
 // arm parachute from RealChute
@@ -55,4 +54,18 @@ global function land {
   }
 
   set kuniverse:timewarp:warp to 0.
+}
+
+global function destroy_bellow {
+  declare parameter a is 40.
+
+  print "Waiting for altitude of " + a + "km".
+  wait until altitude < (a * 1000) and verticalSpeed < 0.
+
+  // has to be executed before destruction to take effect
+  // reset time warp to 1x
+  phy_warp(1).
+  wait 0.
+
+  ship:controlPart:getmodule("ModuleRangeSafety"):doAction("range safety", true).
 }

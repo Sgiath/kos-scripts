@@ -8,7 +8,7 @@ See [kOS documentation](https://ksp-kos.github.io/KOS_DOC/)
 
 ## Boot files
 
-There is currently only `basic.ks` which so far covers my needs. It does following:
+There is currently only `preflight.ks` which so far covers my needs. It does following:
 
 1. opens terminal
 2. switches to archive disk
@@ -21,5 +21,3 @@ There is currently only `basic.ks` which so far covers my needs. It does followi
 ## Launch scripts
 
 I am using MechJeb for navigation so my launch scripts are doing things in parallel with MechJeb.
-Actually my main `auto.ks` launch script is just enabling MechJeb autopilot, triggering initial
-stage and setting up time warp.

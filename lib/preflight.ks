@@ -33,7 +33,7 @@ global function check_engines {
   // list of engine ignited before clamps are released
   local engines is list().
   for eng in ship:Engines {
-    if eng:stage = (clamp:stage + 1) { engines:add(eng). }
+    if eng:stage = clamp:stage or eng:stage = (clamp:stage + 1) { engines:add(eng). }
   }
 
   // sanity check the engine

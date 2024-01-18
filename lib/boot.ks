@@ -17,7 +17,24 @@ function print_header {
   print "     ".
 }
 
-global function basic {
+global function debug {
+  open_terminal().
+
+  print_header().
+
+  // switch to archive
+  switch to 0.
+  cd("0:/debug").
+
+  // start all available experiments
+  start_experiments().
+
+  print_header().
+  print "  -> Ready for debuging".
+  print "     ".
+}
+
+global function preflight_check {
   open_terminal().
 
   print_header().
@@ -33,9 +50,6 @@ global function basic {
   // switch to archive
   switch to 0.
   cd("0:/missions").
-
-  // switch TimeWarp to Physics mode
-  set kuniverse:timewarp:mode to "PHYSICS".
 
   // check clamps sanity
   local clamp to check_clamps().
